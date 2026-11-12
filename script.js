@@ -1,21 +1,3 @@
-// Мобильное меню
-const menuButton = document.querySelector('.menu-toggle');
-const navigation = document.querySelector('.main-nav');
-
-menuButton.addEventListener('click', () => {
-  const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
-  menuButton.setAttribute('aria-expanded', String(!isOpen));
-  navigation.classList.toggle('open', !isOpen);
-});
-
-// Закрываем меню после выбора
-navigation.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', () => {
-    navigation.classList.remove('open');
-    menuButton.setAttribute('aria-expanded', 'false');
-  });
-});
-
 // Форма заявки и статус
 const form = document.querySelector('#trip-form');
 const formStatus = document.querySelector('.form-status');
@@ -44,46 +26,6 @@ form.addEventListener('submit', async (event) => {
 });
 
 // Карусель мест
-const placeGrid = document.querySelector('.place-grid');
-const placeCards = [...placeGrid.querySelectorAll('.place-card')];
-const placeViewport = document.querySelector('.place-viewport');
-let slideIndex = 0;
-
-// Число видимых карточек
-function visiblePlaceCount() {
-  const gap = Number.parseFloat(getComputedStyle(placeGrid).columnGap) || 0;
-  const step = placeCards[0].getBoundingClientRect().width + gap;
-  return Math.max(1, Math.round(placeViewport.clientWidth / step));
-}
-
-// Положение карусели
-function updatePlacesSlider() {
-  const gap = Number.parseFloat(getComputedStyle(placeGrid).columnGap) || 0;
-  const step = placeCards[0].getBoundingClientRect().width + gap;
-  const lastIndex = Math.max(0, placeCards.length - visiblePlaceCount());
-  slideIndex = Math.min(slideIndex, lastIndex);
-  placeGrid.style.transform = `translateX(${-slideIndex * step}px)`;
-}
-
-// Предыдущий слайд
-document.querySelector('.prev').addEventListener('click', () => {
-  const lastIndex = Math.max(0, placeCards.length - visiblePlaceCount());
-  slideIndex = slideIndex <= 0 ? lastIndex : slideIndex - 1;
-  updatePlacesSlider();
-});
-
-// Следующий слайд
-document.querySelector('.next').addEventListener('click', () => {
-  const lastIndex = Math.max(0, placeCards.length - visiblePlaceCount());
-  slideIndex = slideIndex >= lastIndex ? 0 : slideIndex + 1;
-  updatePlacesSlider();
-});
-
-// Обновление при смене размера окна
-window.addEventListener('resize', updatePlacesSlider);
-updatePlacesSlider();
-
-// Кнопки фактов
 document.querySelectorAll('.fact-button').forEach((button) => {
   button.addEventListener('click', () => {
     const fact = document.getElementById(button.getAttribute('aria-controls'));
@@ -127,9 +69,9 @@ function calculateTrip() {
   const travelers = clampInput(travelersInput, 1, 20);
   const days = clampInput(daysInput, 1, 30);
   const nights = clampInput(nightsInput, 0, 30);
-  const stayPerRoom = clampInput(stayCostInput, 0, 10000);
-  const foodPerPerson = clampInput(foodCostInput, 0, 1000);
-  const transportPerPerson = clampInput(localTransportInput, 0, 1000);
+  const stayPerRoom = clampInput(stayCostInput, 0, 1000);
+  const foodPerPerson = clampInput(foodCostInput, 0, 300);
+  const transportPerPerson = clampInput(localTransportInput, 0, 100);
   const rooms = Math.ceil(travelers / 2);
   const stayTotal = stayPerRoom * nights * rooms;
   const foodTotal = foodPerPerson * days * travelers;
@@ -141,11 +83,11 @@ function calculateTrip() {
   }, 0);
   const total = stayTotal + foodTotal + transportTotal + servicesTotal;
 
-  breakdown.innerHTML = `
-    <div><span>Naktsmītne (${rooms} ist. × ${nights} n.)</span><strong>${formatMoney(stayTotal)}</strong></div>
-    <div><span>Ēdiens (${travelers} pers. × ${days} d.)</span><strong>${formatMoney(foodTotal)}</strong></div>
-    <div><span>Pilsētas transports</span><strong>${formatMoney(transportTotal)}</strong></div>
-    <div><span>Papildu pakalpojumi</span><strong>${formatMoney(servicesTotal)}</strong></div>`;
+  breakdown.querySelector('tbody').innerHTML = `
+    <tr><th scope="row">Naktsm\u012btne (${rooms} ist. \u00d7 ${nights} n.)</th><td>${formatMoney(stayTotal)}</td></tr>
+    <tr><th scope="row">\u0112diens (${travelers} pers. \u00d7 ${days} d.)</th><td>${formatMoney(foodTotal)}</td></tr>
+    <tr><th scope="row">Pils\u0113tas transports</th><td>${formatMoney(transportTotal)}</td></tr>
+    <tr><th scope="row">Papildu pakalpojumi</th><td>${formatMoney(servicesTotal)}</td></tr>`;
   totalOutput.textContent = formatMoney(total);
   estimateNote.textContent = 'Orientējošs aprēķins: vienā numurā uzturas līdz 2 cilvēkiem; cenas vari mainīt pēc savām vajadzībām.';
   return { travelers, days, nights, total, selected };

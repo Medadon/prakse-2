@@ -3,24 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f6f4ef">
+  <meta name="theme-color" content="#f7f4fb">
   <meta name="description" content="Atklāj Maskavas ievērojamākās vietas, izvēlies maršrutu un aprēķini ceļojuma pakalpojumu aptuvenās izmaksas.">
   <title>prakse 11.11.2026</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <script src="app.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
   <!-- Содержимое сайта -->
   <header class="site-header">
     <a class="brand" href="#top" aria-label="prakse 11.11.2026 — sākumlapa"><span class="brand-mark">P</span><span>prakse<br><small>11.11.2026</small></span></a>
-    <button class="menu-toggle" aria-label="Atvērt izvēlni" aria-expanded="false"><span></span><span></span></button>
-    <nav class="main-nav" aria-label="Galvenā navigācija">
-      <a href="#places">Ko apskatīt</a><a href="#day-route">Maršruti</a><a href="#city">Par pilsētu</a>
-    </nav>
-    <a class="header-cta" href="#calculator">Plānot ceļojumu <span>↗</span></a>
   </header>
 
   <main id="top">
@@ -39,6 +31,12 @@
     </section>
 
     <!-- О городе -->
+        <nav class="section-nav" aria-label="Sadaļu navigācija">
+      <a href="#places">Apskates vietas</a>
+      <a href="#day-route">Dienas maršruts</a>
+      <a href="#calculator">Ceļojuma budžets</a>
+      <a href="#plan">Pieteikuma forma</a>
+    </nav>
     <section class="intro section-wrap" id="city">
       <div class="intro-kicker"><span class="eyebrow">PILSĒTA, KAS PĀRSTEIDZ</span><span class="short-rule"></span></div>
       <div class="intro-main"><h2>Katram rajonam<br>savs <em>stāsts.</em></h2><p>Maskava prot būt dažāda. Vēsturiskas ieliņas te sastopas ar mūsdienu arhitektūru, bet mierīgi parki — ar lielpilsētas ritmu. Esam apkopojuši vietas un idejas, lai tu varētu iepazīt pilsētu savā veidā.</p><a class="text-link" href="#day-route">Izvēlies savu maršrutu <span>↗</span></a></div>
@@ -47,31 +45,30 @@
 
     <!-- Карусель мест -->
     <section class="places section-wrap" id="places">
-      <div class="section-heading"><div><p class="eyebrow">INTERESANTĀKĀS PILSĒTAS VIETAS</p><h2>Vietas, ko <em>atcerēties</em></h2></div><div class="slider-controls"><button class="slider-button prev" aria-label="Iepriekšējās vietas">←</button><button class="slider-button next" aria-label="Nākamās vietas">→</button></div></div>
-            <div class="place-viewport">
-        <div class="place-grid">
-          <article class="place-card"><a class="place-image" href="#calculator" style="--photo:url('https://images.unsplash.com/photo-1513326738677-b964603b136d?auto=format&fit=crop&w=1100&q=85')"><span class="place-index">01</span><span class="place-arrow">↗</span></a><div class="place-info"><div><h3>Sarkanais laukums</h3><p>Pilsētas sirds · Kitajgoroda</p></div><span class="place-time">2–3 stundas</span></div><button class="fact-button" type="button" aria-expanded="false" aria-controls="fact-red">Uzzināt faktu <span>+</span></button><p class="place-fact" id="fact-red" hidden>Sarkanā laukuma malā atrodas gan Kremlis, gan Svētā Vasīlija katedrāle, kas kļuvusi par vienu no Maskavas pazīstamākajiem simboliem.</p></article>
-          <article class="place-card"><a class="place-image" href="#calculator" style="--photo:url('https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1000&q=85')"><span class="place-index">02</span><span class="place-arrow">↗</span></a><div class="place-info"><div><h3>Zarjadjes parks</h3><p>Daba pilsētā · Kitajgoroda</p></div><span class="place-time">1–2 stundas</span></div><button class="fact-button" type="button" aria-expanded="false" aria-controls="fact-zaryadye">Uzzināt faktu <span>+</span></button><p class="place-fact" id="fact-zaryadye" hidden>Parka “peldošā tilta” 70 metru garā daļa bez balstiem izvirzās virs krastmalas un upes, paverot skatu uz Kremli.</p></article>
-          <article class="place-card"><a class="place-image" href="#calculator" style="--photo:url('https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1000&q=85')"><span class="place-index">03</span><span class="place-arrow">↗</span></a><div class="place-info"><div><h3>Lielais teātris</h3><p>Arhitektūra un māksla · Teātra laukums</p></div><span class="place-time">1–3 stundas</span></div><button class="fact-button" type="button" aria-expanded="false" aria-controls="fact-bolshoi">Uzzināt faktu <span>+</span></button><p class="place-fact" id="fact-bolshoi" hidden>Uz teātra portika jumta atrodas slavenā Apollona kvadriga — skulptūra ar četru zirgu vilktiem ratiem.</p></article>
-          <article class="place-card"><a class="place-image" href="#calculator" style="--photo:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=85')"><span class="place-index">04</span><span class="place-arrow">↗</span></a><div class="place-info"><div><h3>Zvirbuļu kalni</h3><p>Pilsētas panorāma · Universitāte</p></div><span class="place-time">1–2 stundas</span></div><button class="fact-button" type="button" aria-expanded="false" aria-controls="fact-sparrow">Uzzināt faktu <span>+</span></button><p class="place-fact" id="fact-sparrow" hidden>No skatu laukuma paveras plaša panorāma, un netālu atrodas Maskavas Valsts universitātes galvenā ēka.</p></article>
-          <article class="place-card"><a class="place-image" href="#calculator" style="--photo:url('https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1000&q=85')"><span class="place-index">05</span><span class="place-arrow">↗</span></a><div class="place-info"><div><h3>Kristus Pestītāja katedrāle</h3><p>Vēsture un arhitektūra · Ostuženka</p></div><span class="place-time">1–2 stundas</span></div><button class="fact-button" type="button" aria-expanded="false" aria-controls="fact-cathedral">Uzzināt faktu <span>+</span></button><p class="place-fact" id="fact-cathedral" hidden>Katedrāles atjaunošanu sāka 1990. gados, un tā tika pabeigta 2000. gadu sākumā.</p></article>
-          <article class="place-card"><a class="place-image" href="#calculator" style="--photo:url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1000&q=85')"><span class="place-index">06</span><span class="place-arrow">↗</span></a><div class="place-info"><div><h3>VDNH izstāžu parks</h3><p>Parki un paviljoni · Ostankina</p></div><span class="place-time">2–4 stundas</span></div><button class="fact-button" type="button" aria-expanded="false" aria-controls="fact-vdnh">Uzzināt faktu <span>+</span></button><p class="place-fact" id="fact-vdnh" hidden>“Tautu draudzības” strūklaku rotā 16 zeltītas sieviešu figūras, kas simbolizē padomju republikas.</p></article>
+      <div class="section-heading"><div><p class="eyebrow">INTERESANTĀKĀS PILSĒTAS VIETAS</p><h2>Vietas, ko <em>atcerēties</em></h2></div></div>
+            <div class="place-grid">
+          <article class="place-card"><a class="place-image" href="#calculator" ><img class="place-photo" src="assets/fototapetes-sarkanais-laukums-maskava-95904-58434949808463.webp" alt="Svētā Vasīlija katedrāle Sarkanajā laukumā" loading="lazy"><span class="place-index">01</span><span class="place-arrow">↗</span></a><div class="place-info"><div><h3>Sarkanais laukums</h3><p>Pilsētas sirds · Kitajgoroda</p></div><span class="place-time">2–3 stundas</span></div><button class="fact-button" type="button" aria-expanded="false" aria-controls="fact-red">Uzzināt faktu <span>+</span></button><p class="place-fact" id="fact-red" hidden>Sarkanā laukuma malā atrodas gan Kremlis, gan Svētā Vasīlija katedrāle, kas kļuvusi par vienu no Maskavas pazīstamākajiem simboliem.</p></article>
+          <article class="place-card"><a class="place-image" href="#calculator" ><img class="place-photo" src="assets/Parks.jpg" alt="Zarjadjes parka apstādījumi un celiņš" loading="lazy"><span class="place-index">02</span><span class="place-arrow">↗</span></a><div class="place-info"><div><h3>Zarjadjes parks</h3><p>Daba pilsētā · Kitajgoroda</p></div><span class="place-time">1–2 stundas</span></div><button class="fact-button" type="button" aria-expanded="false" aria-controls="fact-zaryadye">Uzzināt faktu <span>+</span></button><p class="place-fact" id="fact-zaryadye" hidden>Parka “peldošā tilta” 70 metru garā daļa bez balstiem izvirzās virs krastmalas un upes, paverot skatu uz Kremli.</p></article>
+          <article class="place-card"><a class="place-image" href="#calculator" ><img class="place-photo" src="assets/Teatrs.webp" alt="Lielā teātra fasāde" loading="lazy"><span class="place-index">03</span><span class="place-arrow">↗</span></a><div class="place-info"><div><h3>Lielais teātris</h3><p>Arhitektūra un māksla · Teātra laukums</p></div><span class="place-time">1–3 stundas</span></div><button class="fact-button" type="button" aria-expanded="false" aria-controls="fact-bolshoi">Uzzināt faktu <span>+</span></button><p class="place-fact" id="fact-bolshoi" hidden>Uz teātra portika jumta atrodas slavenā Apollona kvadriga — skulptūra ar četru zirgu vilktiem ratiem.</p></article>
+          <article class="place-card"><a class="place-image" href="#calculator" ><img class="place-photo" src="assets/kalnu].jpg" alt="Gaisa vagoniņš un Lužniku stadions no Zvirbuķu kalniem" loading="lazy"><span class="place-index">04</span><span class="place-arrow">↗</span></a><div class="place-info"><div><h3>Zvirbuļu kalni</h3><p>Pilsētas panorāma · Universitāte</p></div><span class="place-time">1–2 stundas</span></div><button class="fact-button" type="button" aria-expanded="false" aria-controls="fact-sparrow">Uzzināt faktu <span>+</span></button><p class="place-fact" id="fact-sparrow" hidden>No skatu laukuma paveras plaša panorāma, un netālu atrodas Maskavas Valsts universitātes galvenā ēka.</p></article>
+          <article class="place-card"><a class="place-image" href="#calculator" ><img class="place-photo" src="assets/Hram.jpg" alt="Kristus Pestītāja katedrāle" loading="lazy"><span class="place-index">05</span><span class="place-arrow">↗</span></a><div class="place-info"><div><h3>Kristus Pestītāja katedrāle</h3><p>Vēsture un arhitektūra · Ostuženka</p></div><span class="place-time">1–2 stundas</span></div><button class="fact-button" type="button" aria-expanded="false" aria-controls="fact-cathedral">Uzzināt faktu <span>+</span></button><p class="place-fact" id="fact-cathedral" hidden>Katedrāles atjaunošanu sāka 1990. gados, un tā tika pabeigta 2000. gadu sākumā.</p></article>
+          <article class="place-card"><a class="place-image" href="#calculator" ><img class="place-photo" src="assets/VDNH.jpg" alt="Zeltītas skulptūras pie strūklakas VDNH" loading="lazy"><span class="place-index">06</span><span class="place-arrow">↗</span></a><div class="place-info"><div><h3>VDNH izstāžu parks</h3><p>Parki un paviljoni · Ostankina</p></div><span class="place-time">2–4 stundas</span></div><button class="fact-button" type="button" aria-expanded="false" aria-controls="fact-vdnh">Uzzināt faktu <span>+</span></button><p class="place-fact" id="fact-vdnh" hidden>“Tautu draudzības” strūklaku rotā 16 zeltītas sieviešu figūras, kas simbolizē padomju republikas.</p></article>
         </div>
-      </div>
+      
       <a class="text-link all-places" href="#day-route">Vairāk ideju pastaigām <span>↗</span></a>
     </section>
 
     <!-- Маршрут на день -->
     <section class="day-route section-wrap" id="day-route">
       <div class="day-route-heading"><div><p class="eyebrow">GATAVA IDEJA TAVAI DIENAI</p><h2>Maskava vienā <em>dienā.</em></h2><p>Vēsture, arhitektūra un plaši skati — mierīgs maršruts ar laiku kafijas pauzei un pilsētas iepazīšanai.</p></div><span class="route-duration">APTUVENI 10 STUNDAS<br>6 PIETURAS</span></div>
-      <div class="itinerary">
-        <article class="itinerary-stop"><time>09:00</time><span class="timeline-dot"></span><div><h3>Sarkanais laukums</h3><p>Sāc dienu pašā pilsētas centrā un iepazīsti Kremļa apkārtni.</p><span class="stop-tag">2 stundas · Kitajgoroda</span></div></article>
-        <article class="itinerary-stop"><time>11:30</time><span class="timeline-dot"></span><div><h3>Zarjadjes parks</h3><p>Izstaigā parku un dodies uz “peldošo tiltu” ar skatu uz upi.</p><span class="stop-tag">1,5 stundas · blakus Sarkanajam laukumam</span></div></article>
-        <article class="itinerary-stop"><time>13:00</time><span class="timeline-dot"></span><div><h3>Pusdienu pauze</h3><p>Atpūties un izvēlies kādu no kafejnīcām Kitajgorodas apkārtnē.</p><span class="stop-tag">1 stunda</span></div></article>
-        <article class="itinerary-stop"><time>14:30</time><span class="timeline-dot"></span><div><h3>Lielais teātris</h3><p>Apskati teātra vēsturisko fasādi un Teātra laukumu.</p><span class="stop-tag">1 stunda · Teātra laukums</span></div></article>
-        <article class="itinerary-stop"><time>16:00</time><span class="timeline-dot"></span><div><h3>Kristus Pestītāja katedrāle</h3><p>Dodieties uz katedrāli un pastaigājies gar tuvumā esošo upes krastmalu.</p><span class="stop-tag">1,5 stundas · metro vai kājām</span></div></article>
-        <article class="itinerary-stop"><time>19:00</time><span class="timeline-dot"></span><div><h3>Zvirbuļu kalni</h3><p>Noslēdz dienu ar panorāmas skatu uz pilsētu saulrieta laikā.</p><span class="stop-tag">1 stunda · metro līdz universitātei</span></div></article>
-      </div>
+      <ol class="itinerary">
+        <li class="itinerary-stop"><time>09:00</time><span class="timeline-dot"></span><div><h3>Sarkanais laukums</h3><p>Sāc dienu pašā pilsētas centrā un iepazīsti Kremļa apkārtni.</p><span class="stop-tag">2 stundas · Kitajgoroda</span></div></li>
+        <li class="itinerary-stop"><time>11:30</time><span class="timeline-dot"></span><div><h3>Zarjadjes parks</h3><p>Izstaigā parku un dodies uz “peldošo tiltu” ar skatu uz upi.</p><span class="stop-tag">1,5 stundas · blakus Sarkanajam laukumam</span></div></li>
+        <li class="itinerary-stop"><time>13:00</time><span class="timeline-dot"></span><div><h3>Pusdienu pauze</h3><p>Atpūties un izvēlies kādu no kafejnīcām Kitajgorodas apkārtnē.</p><span class="stop-tag">1 stunda</span></div></li>
+        <li class="itinerary-stop"><time>14:30</time><span class="timeline-dot"></span><div><h3>Lielais teātris</h3><p>Apskati teātra vēsturisko fasādi un Teātra laukumu.</p><span class="stop-tag">1 stunda · Teātra laukums</span></div></li>
+        <li class="itinerary-stop"><time>16:00</time><span class="timeline-dot"></span><div><h3>Kristus Pestītāja katedrāle</h3><p>Dodieties uz katedrāli un pastaigājies gar tuvumā esošo upes krastmalu.</p><span class="stop-tag">1,5 stundas · metro vai kājām</span></div></li>
+        <li class="itinerary-stop"><time>19:00</time><span class="timeline-dot"></span><div><h3>Zvirbuļu kalni</h3><p>Noslēdz dienu ar panorāmas skatu uz pilsētu saulrieta laikā.</p><span class="stop-tag">1 stunda · metro līdz universitātei</span></div></li>
+      </ol>
       <p class="route-tip"><span>✳</span> Laiki ir aptuveni. Pārbaudi muzeju un apskates vietu darba laikus pirms došanās ceļā.</p>
     </section>
     <!-- Идея прогулки -->
@@ -88,9 +85,9 @@
         <div class="budget-inputs">
           <label>Ceļojuma dienas<input id="trip-days" type="number" min="1" max="30" value="3"></label>
           <label>Nakšu skaits<input id="trip-nights" type="number" min="0" max="30" value="2"></label>
-          <label>Naktsmītne par istabu / nakti (€)<input id="stay-cost" type="number" min="0" step="5" value="80"></label>
-          <label>Ēdiens dienā / personai (€)<input id="food-cost" type="number" min="0" step="5" value="30"></label>
-          <label>Transports dienā / personai (€)<input id="local-transport-cost" type="number" min="0" step="1" value="10"></label>
+          <label>Naktsmītne par istabu / nakti (€)<input id="stay-cost" type="number" min="0" max="1000" step="5" value="80"></label>
+          <label>Ēdiens dienā / personai (€)<input id="food-cost" type="number" min="0" max="300" step="5" value="30"></label>
+          <label>Transports dienā / personai (€)<input id="local-transport-cost" type="number" min="0" max="100" step="1" value="10"></label>
         </div>
         <div class="service-list">
           <label class="service-option"><input type="checkbox" name="service" value="guide" data-price="25" data-kind="person"><span class="checkmark"></span><span class="service-copy"><strong>Pastaiga gida pavadībā</strong><small>2 stundas · par personu</small></span><span class="service-price">25 €</span></label>
@@ -98,7 +95,7 @@
           <label class="service-option"><input type="checkbox" name="service" value="boat" data-price="22" data-kind="person"><span class="checkmark"></span><span class="service-copy"><strong>Izbrauciens ar kuģīti</strong><small>Pa Maskavas upi · par personu</small></span><span class="service-price">22 €</span></label>
           <label class="service-option"><input type="checkbox" name="service" value="transfer" data-price="45" data-kind="group"><span class="checkmark"></span><span class="service-copy"><strong>Pilsētas transfērs</strong><small>45 € par auto, līdz 4 personām</small></span><span class="service-price">45 €</span></label>
         </div>
-        <div class="budget-breakdown" id="budget-breakdown" aria-live="polite"></div>
+        <table class="budget-breakdown" id="budget-breakdown" aria-label="Ceļojuma budžeta sadalījums"><tbody></tbody></table>
         <div class="estimate"><span>Aptuvenā summa</span><strong id="estimate-total">0 €</strong></div>
         <p class="estimate-note" id="estimate-note" aria-live="polite">Norādi ceļojuma ilgumu un izvēlies pakalpojumus, lai redzētu aptuvenās izmaksas.</p>
         <button class="button button-dark calculator-submit" id="add-plan" type="button">Pievienot pieteikumam <span>↓</span></button>
